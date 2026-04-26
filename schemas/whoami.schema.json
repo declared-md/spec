@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://declared-md.github.io/spec/schemas/whoami.schema.json",
+  "title": "whoami.md",
+  "description": "JSON Schema for whoami.md v1.0 frontmatter. Validates the YAML frontmatter of an individual identity profile.",
+  "type": "object",
+  "required": ["declared", "kind", "name", "handle"],
+  "additionalProperties": false,
+  "properties": {
+    "declared": {
+      "type": "string",
+      "enum": ["1.0"],
+      "description": "Spec version. Must be the string '1.0'."
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["whoami"],
+      "description": "Standard identifier. Must be 'whoami'."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Display name of the individual."
+    },
+    "handle": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]{2,39}$",
+      "description": "URL slug. Lowercase alphanumeric and hyphens, 2-39 characters."
+    },
+    "headline": {
+      "type": "string",
+      "maxLength": 120,
+      "description": "Short one-line self-description."
+    },
+    "location": {
+      "type": "string",
+      "description": "Free-form location string."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["open-to-work", "working", "building", "learning", "unavailable"],
+      "description": "Current availability status."
+    },
+    "roles": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Professional roles. Free-form strings."
+    },
+    "stack": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Technologies, languages, and frameworks."
+    },
+    "focus": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Topics or domains currently being worked on."
+    },
+    "languages": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Spoken or written languages. ISO 639-1 codes recommended."
+    },
+    "available_for": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Types of engagements the person is open to."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Additional free-form tags for discoverability."
+    },
+    "pronouns": {
+      "type": "string",
+      "description": "Pronouns. Free-form."
+    },
+    "timezone": {
+      "type": "string",
+      "description": "IANA timezone identifier. Example: America/Sao_Paulo."
+    },
+    "links": {
+      "type": "object",
+      "description": "External profile and contact links. All URL values must use https://. The email key accepts mailto: URIs. Any key is allowed.",
+      "properties": {
+        "github": {
+          "type": "string",
+          "pattern": "^https://github\\.com/.+",
+          "description": "GitHub profile URL. Must point to github.com."
+        },
+        "email": {
+          "type": "string",
+          "pattern": "^mailto:.+@.+\\..+",
+          "description": "Contact email as a mailto URI. Example: mailto:user@example.com."
+        }
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^https://"
+      }
+    }
+  }
+}

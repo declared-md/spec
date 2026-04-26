@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://declared-md.github.io/spec/schemas/whatis.schema.json",
+  "title": "whatis.md",
+  "description": "JSON Schema for whatis.md v1.0 frontmatter. Validates the YAML frontmatter of a project identity profile.",
+  "type": "object",
+  "required": ["declared", "kind", "name", "handle"],
+  "additionalProperties": false,
+  "properties": {
+    "declared": {
+      "type": "string",
+      "enum": ["1.0"],
+      "description": "Spec version. Must be the string '1.0'."
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["whatis"],
+      "description": "Standard identifier. Must be 'whatis'."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Project name."
+    },
+    "handle": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]{2,39}$",
+      "description": "URL slug. Lowercase alphanumeric and hyphens, 2-39 characters."
+    },
+    "headline": {
+      "type": "string",
+      "maxLength": 120,
+      "description": "Short one-line project description."
+    },
+    "kind_of_project": {
+      "type": "string",
+      "enum": ["library", "framework", "application", "cli", "service", "protocol", "dataset", "documentation"],
+      "description": "Project type."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["experimental", "alpha", "beta", "stable", "mature", "archived"],
+      "description": "Current development status."
+    },
+    "license": {
+      "type": "string",
+      "description": "SPDX license identifier. Examples: MIT, Apache-2.0, AGPL-3.0."
+    },
+    "language": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Primary programming languages."
+    },
+    "stack": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Frameworks and major dependencies."
+    },
+    "maintained_by": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "GitHub handles of active maintainers."
+    },
+    "sponsored_by": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "GitHub handles or org names of project sponsors."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Additional free-form tags for discoverability."
+    },
+    "links": {
+      "type": "object",
+      "description": "External project links. repo is required. All URL values must use https://. The email key accepts mailto: URIs. Any key is allowed.",
+      "required": ["repo"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "pattern": "^mailto:.+@.+\\..+",
+          "description": "Contact email as a mailto URI."
+        }
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^https://"
+      }
+    }
+  }
+}

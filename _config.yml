@@ -1,0 +1,23 @@
+title: "Declared Specs"
+description: "Official specification documents for declared-md."
+url: "https://declared-md.github.io/specs"
+baseurl: "/specs"
+theme: "jekyll-theme-cayman"
+plugins:
+  - jekyll-seo-tag
+  - jekyll-relative-links
+markdown: "kramdown"
+highlighter: "rouge"
+kramdown:
+  input: GFM
+exclude:
+  - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
+  - LICENSE
+  - .github/
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
