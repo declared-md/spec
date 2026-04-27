@@ -106,9 +106,10 @@ Examples of invalid handles: `T`, `my_project`, `-starts-with-hyphen`, `ends-wit
 
 All three standards use a `links` object for external URLs. The following rules apply to all links:
 
-- All link values that are URLs MUST use the `https://` scheme. Plain `http://` URLs MUST be rejected.
-- Email values (the `email` key only) MUST be valid email addresses.
-- Unknown keys in `links` MUST be rejected by the validator.
+- The `links` object accepts any key. The set of keys is not closed.
+- All values MUST use the `https://` scheme, except the `email` key which MUST use the `mailto:` scheme (e.g. `mailto:user@example.com`).
+- Plain `http://` URLs MUST be rejected.
+- Well-known link keys (e.g. `github`, `twitter`, `site`, `repo`) are documented in each standard's spec for discoverability, but any key that satisfies the URL rules is accepted.
 
 ---
 

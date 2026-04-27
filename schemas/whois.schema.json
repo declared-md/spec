@@ -13,8 +13,8 @@
     "properties": {
       "links": {
         "anyOf": [
-          { "required": ["site"] },
-          { "required": ["github"] }
+          { "type": "object", "required": ["site"] },
+          { "type": "object", "required": ["github"] }
         ]
       }
     }

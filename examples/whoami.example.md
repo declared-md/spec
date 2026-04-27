@@ -17,7 +17,7 @@ timezone: America/Recife
 links:
   github: https://github.com/ana-ferreira
   site: https://anaferreira.dev
-  email: ana@anaferreira.dev
+  email: mailto:ana@anaferreira.dev
 ---
 
 I'm a full-stack developer based in Recife, Brazil, with seven years of experience building internal tools and APIs for logistics companies.
